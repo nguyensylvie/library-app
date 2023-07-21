@@ -44,6 +44,11 @@ public class BorrowController {
         return borrowService.getBorrowedDocuments();
     }
 
+    @GetMapping("/returned")
+    public List<Borrow> getReturnedBorrows() {
+        return borrowService.getReturnedBorrows();
+    }
+
     @GetMapping("/document/{documentId}/borrower")
     public Member getBorrowerByDocumentId(@PathVariable Long documentId) {
         return borrowService.getBorrowerByDocumentId(documentId);

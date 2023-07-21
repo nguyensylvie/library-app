@@ -73,9 +73,12 @@ public class BorrowService {
         throw new EntityNotFoundException("Borrow not found for Document ID: " + documentId);
     }
 
-
     public List<Borrow> getBorrowedDocuments() {
         return borrowRepository.findAllByReturnDateIsNull();
+    }
+
+    public List<Borrow> getReturnedBorrows() {
+        return borrowRepository.findAllByReturnDateIsNotNull();
     }
 
     public Member getBorrowerByDocumentId(Long documentId) {

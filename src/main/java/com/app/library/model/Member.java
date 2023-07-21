@@ -21,5 +21,11 @@ public class Member {
 
     private String lastName;
 
+    private String address;
+
+    private String postalCode;
+
+    private String city;
+
     private LocalDate registrationDate;
 }
