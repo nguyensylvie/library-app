@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { DocumentService } from "src/app/services/document/document.service";
 
@@ -13,13 +14,17 @@ export class DeleteDocumentButtonComponent {
 
   constructor(
     private documentService: DocumentService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   onDeleteDocument(documentId: number): void {
     this.documentService.deleteDocument(documentId).subscribe(() => {
       this.router.navigate(["/management/documents"]);
       this.documentDeleted.emit();
+      this._snackBar.open("Vous avez supprimé un document", "Fermer", {
+        duration: 3000,
+      });
     });
   }
 }
